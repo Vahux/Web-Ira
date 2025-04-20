@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Для Иры ❤</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: linear-gradient(135deg, #0f0f0f, #1a0033);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: white;
+      height: 100vh;
+      width: 100vw;
+      overflow: hidden;
+      position: relative;
+    }
+
+    h1 {
+      text-align: center;
+      margin-top: 80px;
+      font-size: 40px;
+      color: #fff;
+      padding: 0 10px;
+      text-shadow:
+        0 0 5px #ff00cc,
+        0 0 10px #ff00cc,
+        0 0 20px #ff00cc,
+        0 0 40px #ff00cc;
+    }
+
+    .btn {
+      display: block;
+      margin: 40px auto;
+      padding: 15px 30px;
+      font-size: 18px;
+      color: #fff;
+      background-color: transparent;
+      border: 2px solid #ff00cc;
+      border-radius: 10px;
+      cursor: pointer;
+      box-shadow:
+        0 0 5px #ff00cc,
+        0 0 10px #ff00cc,
+        0 0 20px #ff00cc;
+      transition: background-color 0.3s, transform 0.2s;
+    }
+
+    .btn:hover {
+      background-color: #ff00cc33;
+      transform: scale(1.05);
+    }
+
+    .floating-text {
+      position: absolute;
+      color: white;
+      font-size: 32px;
+      font-weight: bold;
+      text-shadow:
+        0 0 5px #ff00cc,
+        0 0 10px #ff00cc,
+        0 0 20px #ff00cc,
+        0 0 40px #ff00cc;
+      animation: floatDown 10s linear infinite;
+      pointer-events: none;
+      user-select: none;
+      white-space: nowrap;
+    }
+
+    @keyframes floatDown {
+      0% {
+        transform: translateY(-100px) rotate(0deg);
+        opacity: 0;
+      }
+      10% {
+        opacity: 1;
+      }
+      90% {
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(100vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
+
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 28px;
+        margin-top: 60px;
+      }
+
+      .btn {
+        padding: 12px 24px;
+        font-size: 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Привет, Ира! ❤</h1>
+  <button class="btn" onclick="showMessage()">Нажми на меня</button>
+
+  <script>
+    function showMessage() {
+      alert("Надеюсь тебе нравится)");
+    }
+
+    function createFloatingText() {
+      const text = document.createElement("div");
+      text.classList.add("floating-text");
+      text.textContent = "Ира ❤";
+      text.style.left = Math.random() * 100 + "vw";
+      text.style.top = "-50px";
+      text.style.animationDuration = (6 + Math.random() * 5) + "s";
+      text.style.fontSize = (24 + Math.random() * 20) + "px";
+      document.body.appendChild(text);
+
+      setTimeout(() => {
+        text.remove();
+      }, 10000);
+    }
+
+    for (let i = 0; i < 15; i++) {
+      setTimeout(() => {
+        createFloatingText();
+      }, i * 400);
+    }
+
+    setInterval(() => {
+      createFloatingText();
+    }, 1200);
+  </script>
+
+</body>
+</html>
